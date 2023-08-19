@@ -18,10 +18,14 @@
             <!-- Text area for Html Code  -->
             <textarea id="htmlValue" placeholder="Type HTML code here" spellcheck="false" oninput="update(0)"
                 onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}">
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-                </textarea>
-
+<div class="container">
+<h1></h1>
+<p></p>
+</div>                
+</textarea>
+            
             <!-- Text area for Css Code  -->
             <textarea id="cssValue" placeholder="Type CSS code here" spellcheck="false" oninput="update(0)"
                 onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
