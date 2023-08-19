@@ -17,7 +17,7 @@
     height: 90vh;
 }
 
-.container {
+.container-don {
     background: #444444;
     display: flex;
     flex-direction: column;
@@ -27,12 +27,12 @@
 
 }
 
-.container textarea {
+.container-don textarea {
     background-color: #444444;
     border: 1px solid;
     resize: none;
     width: 100%;
-    height: 33.333%;
+/*     height: 33.333%; */
     font-size: 1rem;
     padding: 10px;
     resize: vertical;
@@ -40,7 +40,7 @@
     color: white;
 }
 
-.container textarea:focus {
+.container-don textarea:focus {
     outline: none;
     color: white;
 }
