@@ -70,3 +70,8 @@
 .gutter.gutter-horizontal {
     cursor: ew-resize;
 }
+
+
+#htmlValue{
+    height: 80%;
+}
