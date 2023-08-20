@@ -1,2 +1,2 @@
 # TechnoBeast
-This si the main techno beast website
+This is the main techno beast website
