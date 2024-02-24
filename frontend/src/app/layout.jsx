@@ -9,8 +9,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" >
+      <body style={{"backgroundImage": `url(/bg.png)`}} className="text-white">
         <Navbar />
         {children}
         <Footer />
