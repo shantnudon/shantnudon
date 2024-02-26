@@ -10,10 +10,10 @@ const card = ({ name, url, img }) => {
       {/* {img} */}
           </p>
 
-          <p class="cardtxt font-semibold text-white tracking-wider group-hover:text-gray-700 text-xl">
+          <p className="cardtxt font-semibold text-white tracking-wider group-hover:text-gray-700 text-xl">
             {name}
           </p>
-          <p class="blueberry font-semibold text-white text-xs">{url}</p>
+          <p className="blueberry font-semibold text-white text-xs">{url}</p>
         </div>
       </a>
     </>
