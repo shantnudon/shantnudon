@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import MyCard from "../../components/myCard";
+import MyCard from "../../../components/myCard";
 import { useEffect, useState } from "react";
 
 export default function Home() {

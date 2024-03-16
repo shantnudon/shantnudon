@@ -32,27 +32,28 @@
 </head>
 
 <body>
-    <a href="https://shantnudon.github.io/shantnudon/html-css-js/">
-        <h1 class="papa-don">HTML-CSS-JS Editor by Shantnu</h1><a>
-            <div class="thook">
-                <div class="container-don split">
-                    <!-- Text area for Html Code  -->
-                    <textarea id="htmlValue" placeholder="Type HTML code here" spellcheck="false" oninput="update(0)"
-                        onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+    <h1 class="papa-don">HTML-CSS-JS Editor by Shantnu</h1>
+    <h3 align="center"><a href="https://shantnudon.github.io/shantnudon/html-css-js/">Home
+    </a></h3>
+    <div class="thook">
+        <div class="container-don split">
+            <!-- Text area for Html Code  -->
+            <textarea id="htmlValue" placeholder="Type HTML code here" spellcheck="false" oninput="update(0)"
+                onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
 
-                    <!-- Text area for Css Code  -->
-                    <textarea id="cssValue" placeholder="Type CSS code here" spellcheck="false" oninput="update(0)"
-                        onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
-                    <!-- Text area for Javascript Code  -->
+            <!-- Text area for Css Code  -->
+            <textarea id="cssValue" placeholder="Type CSS code here" spellcheck="false" oninput="update(0)"
+                onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+            <!-- Text area for Javascript Code  -->
 
-                    <textarea id="javascriptValue" spellcheck="false" placeholder="Type JavaScript code here"
-                        oninput="update(0)"
-                        onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
-                </div>
-                <div class="iframe-container-don split">
-                    <iframe id="viewer"></iframe>
-                </div>
-            </div>
+            <textarea id="javascriptValue" spellcheck="false" placeholder="Type JavaScript code here"
+                oninput="update(0)"
+                onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+        </div>
+        <div class="iframe-container-don split">
+            <iframe id="viewer"></iframe>
+        </div>
+    </div>
 </body>
 
 </html>
