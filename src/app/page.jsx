@@ -31,7 +31,7 @@ const page = () => {
           with code.
         </p>
         <button className="m-2 p-2 bg-green-200 text-black text-xl rounded-xl hover:bg-green-500">
-          <a href="">Website Link</a>
+          <a href="https://shantnudon.vercel.app/html-css-js/index.html">Website Link</a>
         </button>
 
       </Parallex>
@@ -42,7 +42,7 @@ const page = () => {
           the code to optimize its size and improve loading times on web pages. 
         </p>
         <button className="m-2 p-2 bg-green-200 text-black text-xl rounded-xl hover:bg-green-500">
-          <a href="">Website Link</a>
+          <a href="minifyHTML/index.html">Website Link</a>
         </button>
       </Parallex>
     </div>
