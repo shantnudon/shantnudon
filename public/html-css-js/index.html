@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML-CSS-JS Editor</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script defer type="text/javascript" src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.0.0/split.min.js"
+        integrity="sha512-tTsZnBXEzNdEaqUO9Ok8fUofS73xieiBa54pD/sxOSvayIgItM9MmEM0CnUjA13LDnJT22sfwmjf20+Bo2174g=="
+        crossorigin="anonymous"></script>
+    <script>
+        // Function to get query parameter from the URL
+        function getParameByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Get the value of the 'shantnu' parameter from the URL
+        var shantnuValue = getParameByName('shantnu');
+
+        // Set the value of the textarea with id 'shantnu'
+        window.onload = function () {
+            document.getElementById('htmlValue').value = shantnuValue || '';
+        };
+    </script>
+
+</head>
+
+<body>
+    <h1 class="papa-don">HTML-CSS-JS Editor by Shantnu</h1>
+    <h3 align="center"><a href="https://shantnudon.github.io/shantnudon/html-css-js/">Home
+    </a></h3>
+    <div class="thook">
+        <div class="container-don split">
+            <!-- Text area for Html Code  -->
+            <textarea id="htmlValue" placeholder="Type HTML code here" spellcheck="false" oninput="update(0)"
+                onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+
+            <!-- Text area for Css Code  -->
+            <textarea id="cssValue" placeholder="Type CSS code here" spellcheck="false" oninput="update(0)"
+                onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+            <!-- Text area for Javascript Code  -->
+
+            <textarea id="javascriptValue" spellcheck="false" placeholder="Type JavaScript code here"
+                oninput="update(0)"
+                onkeydown="if(event.keyCode===9){const d=this.value,o=this.selectionStart,n=this.selectionEnd;this.value=d.substring(0, o)+'\t'+d.substring(n);this.selectionStart=this.selectionEnd=o+1;return false;}if(event.keyCode==8){update(1);}"></textarea>
+        </div>
+        <div class="iframe-container-don split">
+            <iframe id="viewer"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>

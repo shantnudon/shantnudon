@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>minifyHTML</title>
+  </head>
+  <body>
+    <h1 align="center">Minify Code by Shantnu</h1>
+    <h3 align="center"><a href="/">Home</a></h3>
+    <div style="display: grid; align-content: center; justify-content: center">
+      <form method="post" action="" className="online-tools">
+        <h1>Enter your non-minified(Full) HTML code here</h1>
+        <textarea id="fullCode" name="fullCode" rows="10" cols="100"></textarea>
+        <br><br>
+        <div>
+            <input
+              type="button"
+              name="donHtmlMinify"
+              value="Minify your full HTML code here"
+              id="minifyHTMLCodeHere"
+            />
+            <input type="button" name="resetText" id="resetText" value="Reset" />
+        </div>
+        <h1>Minified Code here</h1>
+        <textarea
+          id="minifiedCode"
+          name="minifiedCode"
+          rows="10"
+          cols="100"
+        ></textarea>
+        <p>
+          <input
+            value="Copy To Clipboard"
+            type="button"
+            name="copyToClip"
+            id="copyToClip"
+            onclick="myCopyToClipboard()"
+          />
+        </p>
+      </form>
+    </div>
+  </body>
+  <script>
+    document
+      .getElementById("minifyHTMLCodeHere")
+      .addEventListener("click", function () {
+        let allHTML = document.getElementById("fullCode").value;
+        let headHTML = "";
+        let removeThis = "";
+        allHTML = allHTML.replace(/(\r\n|\n|\r|\t)/gm, "");
+        allHTML = allHTML.replace(/\s+/g, " ");
+        document.getElementById("minifiedCode").value = allHTML;
+      });
+
+    //reset text areas
+    document.getElementById("resetText").addEventListener("click", function () {
+      document.getElementById("fullCode").value = "";
+      document.getElementById("minifiedCode").value = "";
+      document.getElementById("fullCode").focus();
+    });
+
+    let textBox = document.getElementById("minifiedCode");
+    textBox.onfocus = function () {
+      textBox.select();
+      textBox.onmouseup = function () {
+        textBox.onmouseup = null;
+        return false;
+      };
+    };
+
+    function myCopyToClipboard() {
+      let copyText = document.getElementById("minifiedCode");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(copyText.value);
+      alert("Copied the text: " + copyText.value);
+    }
+  </script>
+</html>
