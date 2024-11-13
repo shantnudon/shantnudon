@@ -1,8 +1,7 @@
-import jwt from "jsonwebtoken";
-import prisma from "../../../../lib/prisma";
+import { fetchTokenVerification } from "../../../../lib/checkAuthToken";
 
 export async function POST(req) {
-  const { token } = await req.json(); // Get the token from the request body
+  const token = req.headers.get("authorization");
   console.log(token);
   if (!token) {
     return new Response(
@@ -11,43 +10,22 @@ export async function POST(req) {
     );
   }
 
-  try {
-    // Verify the JWT token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Use your JWT secret here
+  const user = await fetchTokenVerification(token);
 
-    // Extract the username from the decoded token
-    const { username } = decoded;
-
-    // Fetch user from the database using Prisma
-    const user = await prisma.user.findUnique({
-      where: { username: username },
-    });
-
-    if (!user) {
-      return new Response(
-        JSON.stringify({ status: "error", message: "User not found" }),
-        { status: 404 }
-      );
-    }
-
-    // Return the user data along with a success message
+  console.log(user);
+  if (!user) {
     return new Response(
-      JSON.stringify({
-        status: 200,
-        message: "Token verified successfully",
-        user: {
-          userId: user.id,
-          username: user.username,
-          userType: user.userType,
-        },
-      }),
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Error verifying token:", error);
-    return new Response(
-      JSON.stringify({ status: "error", message: "Invalid token or expired" }),
+      JSON.stringify({ status: "error", message: "Invalid token" }),
       { status: 401 }
     );
   }
+
+  return new Response(
+    JSON.stringify({
+      status: "success",
+      message: "Token is valid",
+      data: user,
+    }),
+    { status: 200 }
+  );
 }

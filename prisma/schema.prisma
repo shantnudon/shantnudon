@@ -19,7 +19,7 @@ model User {
 }
 
 model List {
-    id     String   @id
+    id     BigInt   @id @default(autoincrement())
     name   String
     type   String
     status String
