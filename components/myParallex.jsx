@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
 import { ParallaxProvider, ParallaxBanner } from "react-scroll-parallax";
 
 const ReusableParallax = ({ backgroundImage, children }) => {

@@ -64,17 +64,17 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-  
-  html {
+
+  /* html {
     background-image: url("/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    height: auto;
-    /* background-color: ; */
-    /* margin: auto; */
-    /* backdrop-filter: blur(10px); */
-    /* background-color: beige; */
-  }
+    height: auto; */
+  /* background-color: ; */
+  /* margin: auto; */
+  /* backdrop-filter: blur(10px); */
+  /* background-color: beige; */
+  /* } */
 }
 
 @layer base {
@@ -86,18 +86,15 @@
   }
 }
 
-.glass{
-	/* From https://css.glass */
-background: rgba(255, 255, 255, 0.558);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
+.glass {
+  background: rgba(255, 255, 255, 0.558);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
-
-.glass1{
-	/* From https://css.glass */
-background: rgba(255, 255, 255, 0.1);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(16.6px);
--webkit-backdrop-filter: blur(16.6px);
+.glass1 {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16.6px);
+  -webkit-backdrop-filter: blur(16.6px);
 }

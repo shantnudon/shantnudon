@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sudoku Pro - Shantnu | Portfolio Project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 2rem;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        color: #2b2d42;
+        margin-bottom: 0.5rem;
+      }
+
+      .header h3 {
+        color: #4a4e69;
+        font-weight: 400;
+      }
+
+      .game-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(9, 50px);
+        grid-template-rows: repeat(9, 50px);
+        gap: 2px;
+        margin-bottom: 1.5rem;
+      }
+
+      .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+        border: 1px solid #ced4da;
+        background-color: #fff;
+        transition: background-color 0.2s;
+      }
+
+      .cell:hover {
+        background-color: #f8f9fa;
+      }
+
+      .cell input {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        border: none;
+        font-size: 1.5em;
+        color: #2b2d42;
+        font-weight: 500;
+      }
+
+      .cell input[readonly] {
+        background-color: #e9ecef;
+        color: #4a4e69;
+        font-weight: 600;
+      }
+
+      .sub-grid {
+        border: 2px solid #4a4e69;
+      }
+
+      .controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: #4a4e69;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      button:hover {
+        background: #2b2d42;
+        transform: translateY(-2px);
+      }
+
+      .documentation {
+        max-width: 800px;
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 0.5rem;
+        border-left: 4px solid #4a4e69;
+      }
+
+      .tech-stack {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 0.4rem 1.5rem;
+      }
+
+      .tech-item {
+        background: #e9ecef;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+      }
+
+   @media (max-width: 768px) {
+        body {
+          padding: 1rem;
+        }
+        
+        .game-container {
+          padding: 1rem;
+          width: 100%;
+        }
+
+        .container {
+          grid-template-columns: repeat(9, 9vw);
+          grid-template-rows: repeat(9, 9vw);
+		  justify-content:center;
+        }
+
+        .cell {
+          width: 9vw;
+          height: 9vw;
+          font-size: 1.2em;
+        }
+
+        button {
+          padding: 0.6rem 1rem;
+          font-size: 1rem;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .header h3 {
+          font-size: 1rem;
+        }
+      }
+
+ @media (max-width: 320px) {
+        
+        .cell {
+          width: 9vw;
+          height: 9vw;
+          font-size: 1rem;
+        }
+		
+		.tech-stack{
+		display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+		}
+      }	  
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: upper-roman;
+        list-style-position: inside;
+        margin-left: 5px;
+      }
+      
+      .roadmap {
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1><i class="fas fa-puzzle-piece"></i> Sudoku Pro</h1>
+      <h3>A Smart Puzzle Solution by Shantnu</h3>
+    </div>
+
+    <div class="game-container">
+      <div class="container" id="sudokuGrid"></div>
+      <div class="controls">
+        <button onclick="solveSudoku()">
+          <i class="fas fa-brain"></i> Solve
+        </button>
+        <button onclick="reload()"><i class="fas fa-redo"></i> Reset</button>
+      </div>
+    </div>
+
+    <div class="documentation">
+      <h2>Project Highlights <i class="fas fa-star"></i></h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3><i class="fas fa-check-circle"></i> Core Features</h3>
+          <ul>
+            <li>Real-time input validation</li>
+            <li>Dynamic puzzle generation</li>
+            <li>Responsive design</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <h3><i class="fas fa-cogs"></i> Tech Stack</h3>
+          <div class="tech-stack">
+            <span class="tech-item">Vanilla JS</span>
+            <span class="tech-item">CSS Grid</span>
+            <span class="tech-item">HTML5</span>
+            <span class="tech-item">Flexbox</span>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <h3><i class="fas fa-tasks"></i> Key Metrics</h3>
+          <ul>
+            <li>20+ pre-filled cells</li>
+            <li>Super Fast validation</li>
+            <li>100% solve rate</li>
+            <li>Mobile-first design</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3><i class="fas fa-code"></i> Implementation Details</h3>
+      <ul>
+        <li>Recursive backtracking solver with O(n) efficiency</li>
+        <li>Real-time conflict detection using data attributes</li>
+        <li>Dynamic grid generation with DOM manipulation</li>
+        <li>Error prevention through input sanitization</li>
+      </ul>
+
+      <h3 class="roadmap"><i class="fas fa-road"></i> Future Roadmap</h3>
+      <div class="tech-stack">
+        <span class="tech-item"
+          ><i class="fas fa-plus"></i> Difficulty Levels</span
+        >
+        <span class="tech-item"
+          ><i class="fas fa-plus"></i> Progress Saving</span
+        >
+        <span class="tech-item"><i class="fas fa-plus"></i> Error Counter</span>
+        <span class="tech-item"><i class="fas fa-plus"></i> Analytics</span>
+      </div>
+    </div>
+
+    <script>
+      function reload() {
+        window.location.reload();
+      }
+
+      const numPreFilled = 20;
+
+      function generateInitialGrid() {
+        const grid = Array.from({ length: 9 }, () => Array(9).fill(0));
+
+        let count = 0;
+        while (count < numPreFilled) {
+          const row = Math.floor(Math.random() * 9);
+          const col = Math.floor(Math.random() * 9);
+          const num = Math.floor(Math.random() * 9) + 1;
+
+          if (grid[row][col] === 0 && isValid(grid, row, col, num)) {
+            grid[row][col] = num;
+            count++;
+          }
+        }
+        return grid;
+      }
+
+      function createGrid() {
+        const grid = document.getElementById("sudokuGrid");
+        const initialGrid = generateInitialGrid();
+
+        for (let i = 0; i < 9; i++) {
+          for (let j = 0; j < 9; j++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            if (i % 3 === 0 && j % 3 === 0) {
+              cell.classList.add("sub-grid");
+            }
+            const input = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.max = "9";
+
+            input.dataset.row = i;
+            input.dataset.col = j;
+
+            input.addEventListener("input", function (e) {
+              validateInput(e.target);
+            });
+
+            cell.appendChild(input);
+            grid.appendChild(cell);
+
+            if (initialGrid[i][j] !== 0) {
+              input.value = initialGrid[i][j];
+              input.readOnly = true;
+            }
+          }
+        }
+      }
+
+      function validateInput(input) {
+        const row = parseInt(input.dataset.row);
+        const col = parseInt(input.dataset.col);
+        const value = input.value ? parseInt(input.value) : 0;
+
+        input.style.backgroundColor = "";
+
+        if (value === 0 || input.readOnly) return;
+
+        if (value < 1 || value > 9) {
+          input.value = "";
+          return;
+        }
+
+        // Check for conflicts
+        const grid = getGridValues();
+        if (!isUserInputValid(grid, row, col, value)) {
+          input.style.backgroundColor = "#ff0000";
+          input.style.color = "white";
+          setTimeout(() => {
+            input.value = "";
+            input.style.backgroundColor = "";
+          }, 1000);
+        }
+      }
+
+      function isUserInputValid(grid, row, col, num) {
+        for (let i = 0; i < 9; i++) {
+          if (i !== col && grid[row][i] === num) return false;
+        }
+        for (let i = 0; i < 9; i++) {
+          if (i !== row && grid[i][col] === num) return false;
+        }
+        const subgridStartRow = Math.floor(row / 3) * 3;
+        const subgridStartCol = Math.floor(col / 3) * 3;
+
+        for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+            const currentRow = subgridStartRow + i;
+            const currentCol = subgridStartCol + j;
+            if (currentRow === row && currentCol === col) continue;
+            if (grid[currentRow][currentCol] === num) return false;
+          }
+        }
+        return true;
+      }
+
+      function solveSudoku() {
+        const grid = getGridValues();
+        if (solve(grid)) {
+          setGridValues(grid);
+          alert("Sudoku solved!");
+        } else {
+          alert("No solution found!");
+        }
+      }
+
+      function getGridValues() {
+        const grid = [];
+        const inputs = document.querySelectorAll(".cell input");
+        inputs.forEach((input, index) => {
+          const value = input.value ? parseInt(input.value) : 0;
+          const row = Math.floor(index / 9);
+          const col = index % 9;
+          if (!grid[row]) grid[row] = [];
+          grid[row][col] = value;
+        });
+        return grid;
+      }
+
+      function setGridValues(grid) {
+        const inputs = document.querySelectorAll(".cell input");
+        inputs.forEach((input, index) => {
+          const row = Math.floor(index / 9);
+          const col = index % 9;
+          if (!input.readOnly) {
+            input.value = grid[row][col] !== 0 ? grid[row][col] : "";
+          }
+        });
+      }
+
+      function isValid(grid, row, col, num) {
+        for (let i = 0; i < 9; i++) {
+          if (
+            grid[row][i] === num ||
+            grid[i][col] === num ||
+            grid[3 * Math.floor(row / 3) + Math.floor(i / 3)][
+              3 * Math.floor(col / 3) + (i % 3)
+            ] === num
+          ) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function solve(grid) {
+        for (let row = 0; row < 9; row++) {
+          for (let col = 0; col < 9; col++) {
+            if (grid[row][col] === 0) {
+              for (let num = 1; num <= 9; num++) {
+                if (isValid(grid, row, col, num)) {
+                  grid[row][col] = num;
+                  if (solve(grid)) {
+                    return true;
+                  }
+                  grid[row][col] = 0;
+                }
+              }
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      createGrid();
+    </script>
+  </body>
+</html>

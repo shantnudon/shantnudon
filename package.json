@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 2020",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -14,11 +14,14 @@
     "axios": "^1.7.7",
     "embla-carousel-react": "^8.0.0-rc23",
     "eslint-config-next": "^15.0.3",
+    "framer-motion": "^12.0.6",
     "lucide-react": "^0.335.0",
     "next": "^15.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
     "react-scroll-parallax": "^3.4.5",
+    "react-typed": "^2.0.12",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
