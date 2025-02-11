@@ -472,7 +472,7 @@ export default function Home() {
                 fetch the data of the movies.
               </p>
               <a
-                href="https://https://shantnu-watch-list.vercel.app/"
+                href="https://shantnu-watch-list.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-indigo-600 hover:text-indigo-700 dark:text-indigo-300 dark:hover:text-indigo-200 inline-block mt-2"
