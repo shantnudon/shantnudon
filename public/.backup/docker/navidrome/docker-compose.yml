@@ -1,0 +1,17 @@
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    user: 0:0
+    ports:
+      - 4533:4533
+    restart: unless-stopped
+    environment:
+      ND_SCANSCHEDULE: 10m
+      ND_LOGLEVEL: info
+      ND_SESSIONTIMEOUT: 24h
+      ND_SPOTIFY_ID: 0f53221f05de476099bffe34a20ecfea
+      ND_SPOTIFY_SECRET: 2e563511299a4278a541b3300b2dadb4
+      ND_BASEURL: ""
+    volumes:
+      - /root/navi/data:/data
+      - /root/navi/music:/music:ro

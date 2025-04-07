@@ -1,0 +1,9 @@
+services:
+  glance:
+    container_name: glance
+    image: glanceapp/glance
+    volumes:
+      - /home/don/glance:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3010:8080

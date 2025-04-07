@@ -1,0 +1,12 @@
+services:
+  nginx_proxy_manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - "80:80"    # HTTP
+      - "443:443"  # HTTPS
+      - "81:81"    # Admin Panel
+    volumes:
+      - /home/don/nginx/data:/data
+      - /home/don/nginx/letsencrypt:/etc/letsencrypt
+      - /home/don/nginx/npm_logs:/var/log/nginx

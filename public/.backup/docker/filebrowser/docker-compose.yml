@@ -1,0 +1,12 @@
+services:
+  filebrowser:
+    image: hurlenko/filebrowser
+    user: "${UID}:${GID}"
+    ports:
+      - 3020:8080
+    volumes:
+      - /mnt/nvme:/data
+      - /home/don/filebrowser:/config
+    environment:
+      - FB_BASEURL=/filebrowser
+    restart: always

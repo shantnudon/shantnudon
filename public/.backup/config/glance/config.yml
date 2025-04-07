@@ -1,0 +1,103 @@
+pages:
+  - name: Home
+    hide-desktop-navigation: true
+    branding:
+    custom-footer: |
+      <p></p>
+    columns:
+      - size: small
+        widgets:
+          - type: clock
+            hour-format: 12h
+            timezones:
+              - timezone: Asia/Kolkata
+                label: New Delhi
+              - timezone: America/New_York
+                label: New York
+          - type: server-stats
+            servers:
+              - type: local
+                name: Portainer
+                mountpoints:
+                  "/mnt/nvme":
+                    hide : false
+                  "/":
+                    hide : false
+          - type: markets
+            markets:
+              - symbol: BTC-USD
+              - symbol: SOL-USD
+              - symbol: BNB-USD
+      - size: full
+        widgets:
+          - type: search
+            autofocus: true
+          - type: monitor
+            cache: 1m
+            title: Services
+            sites:
+              - title: Proxmox
+                url: https://proxmox.local.waybacktoyourhome.online
+                icon: si:proxmox
+              - title: Portainer
+                url: https://portainer.local.waybacktoyourhome.online
+                icon: si:portainer
+              - title: Nginx Proxy Manager
+                url: https://nginx.local.waybacktoyourhome.online
+                icon: si:nginx
+              - title: Navidrome
+                url: https://navidrome.local.waybacktoyourhome.online
+                icon: si:youtubemusic
+              - title: Immich
+                url: https://immich.local.waybacktoyourhome.online
+                icon: si:immich
+              - title: Nextcloud
+                url: https://nextcloud.local.waybacktoyourhome.online
+                icon: si:nextcloud
+              - title: Vaultwarden
+                url: https://vault.local.waybacktoyourhome.online
+                icon: si:vaultwarden
+              - title: SpeedTestChecker
+                url: https://speedtest.local.waybacktoyourhome.online/
+                icon: si:speedtest
+              - title: File Browser
+                url: https://filebrowser.local.waybacktoyourhome.online
+                icon: si:files
+          - type: bookmarks
+            groups:
+              - links:
+                  - title: Gmail
+                    url: https://mail.google.com/mail/u/0/
+                  - title: Google AI
+                    url: https://aistudio.google.com/prompts/new_chat
+              - title: Entertainment
+                color: 10 70 50
+                links:
+                  - title: Youtube
+                    url: https://www.youtube.com/
+              - title: Social
+                color: 200 50 50
+                links:
+                  - title: Reddit
+                    url: https://www.reddit.com/
+                  - title: Discord
+                    url: https://discord.com/channels/@me/
+          - type: docker-containers
+            hide-by-default: false
+
+      - size: small
+        widgets:
+          - type: weather
+            location: New Delhi, India
+            units: metric # alternatively "imperial"
+            hour-format: 12h # alternatively "24h"
+            # Optionally hide the location from being displayed in the widget
+            # hide-location: true
+
+          - type: markets
+            markets:
+              - symbol: ^NDX
+              - symbol: ^NSEI
+              - symbol: ^BSESN
+              - symbol: NVDA
+              - symbol: AAPL

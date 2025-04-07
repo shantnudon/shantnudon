@@ -1,0 +1,52 @@
+services:
+  nextcloud_db:
+    image: mariadb:10.6
+    container_name: nextcloud_mariadb
+    restart: always
+    command:
+      - --transaction-isolation=READ-COMMITTED
+      - --log-bin=binlog
+      - --binlog-format=ROW
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+    volumes:
+      - /data/nextcloud/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    networks:
+      - nextcloud_network
+
+  nextcloud_redis:
+    container_name: nextcloud_redis
+    image: docker.io/redis:6.2-alpine@sha256:148bb5411c184abd288d9aaed139c98123eeb8824c5d3fce03cf721db58066d8
+    healthcheck:
+      test: redis-cli ping || exit 1
+    restart: always
+    networks:
+      - nextcloud_network
+
+  nextcloud:
+    image: lscr.io/linuxserver/nextcloud:latest
+    container_name: nextcloud
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /data/nextcloud/config:/config
+      - /mnt/nvme/data/data:/data
+    ports:
+      - 3000:443
+    restart: unless-stopped
+    depends_on:
+      - nextcloud_db
+    networks:
+      - nextcloud_network
+
+networks:
+  nextcloud_network:
+    driver: bridge
+    name: nextcloud_network
