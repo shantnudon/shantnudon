@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-scroll-area": "^1.0.5",
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-scroll-area": "^1.2.9",
+    "@radix-ui/react-slot": "^1.2.3",
     "axios": "^1.7.7",
     "embla-carousel-react": "^8.0.0-rc23",
     "eslint-config-next": "^15.4.1",
